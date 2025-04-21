@@ -54,6 +54,15 @@
             });
         @endif
 
+        @if (session('errorBookinCheck'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal Booking',
+                text: '{{ session('errorBookingCheck') }}',
+                confirmButtonText: 'OK'
+            });
+        @endif
+
         @if (session('swalError'))
             Swal.fire({
                 icon: 'warning',

@@ -84,6 +84,7 @@
                         <div class="mb-3">
                             <label for="check_out_date" class="form-label">Check-out</label>
                             <input type="date" class="form-control" id="check_out_date" name="check_out_date" required min="{{ date('Y-m-d') }}">
+                            <small>Check in dan Check out tidak boleh sama!</small>
                         </div>
                         <div class="mb-3">
                             <label for="guest_count" class="form-label">Jumlah Orang</label>

@@ -131,6 +131,10 @@ class FrontendController extends Controller
             'special_requests' => 'nullable|string',
         ]);
 
+        if ($request->check_in_date === $request->check_out_date) {
+            return redirect()->back()->with('errorBookingCheck', 'Check in dan Check out tidak boleh sama!.');
+        }
+
         $existingBooking = Service::where('category_service_id', $request->category_service_id)
             ->whereDate('check_in_date', $request->check_in_date)
             ->exists();
