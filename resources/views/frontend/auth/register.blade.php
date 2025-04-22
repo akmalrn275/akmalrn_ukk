@@ -9,13 +9,13 @@
                     <div class="card-body">
                         <h3 class="card-title text-center mb-4">Buat Akun Baru</h3>
 
-                        <form action="{{ url('registerTamuPost') }}" method="POST" id="register">
+                        <form action="{{ url('registerTamuPost') }}" method="POST" id="register" style="margin-top: 40px">
                             @csrf
 
                             <div class="mb-3">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     id="name" name="name" value="{{ old('name') }}" required
-                                    placeholder="Masukkan Nama Anda (Nama Lengkap)" autocomplete="new-name">
+                                    placeholder="Masukkan Nama Lengkap Anda">
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -24,7 +24,7 @@
                             <div class="mb-3">
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     id="email" name="email" value="{{ old('email') }}" required
-                                    placeholder="Masukan Alamat Email Anda contoh@email.com" autocomplete="new-email">
+                                    placeholder="Masukan Alamat Email Anda">
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -32,7 +32,7 @@
 
                             <div class="mb-3">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    id="password" name="password" required placeholder="Password Minimal 8 karakter" autocomplete="new-password">
+                                    id="password" name="password" required placeholder="Masukan Password Anda">
                                 @error('password')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -40,7 +40,7 @@
 
                             <div class="mb-3">
                                 <input type="password" class="form-control" id="password_confirmation"
-                                    name="password_confirmation" required placeholder="Ulangi password" autocomplete="new-password">
+                                    name="password_confirmation" required placeholder="Ulangi password">
                             </div>
 
                             <div class="d-grid">

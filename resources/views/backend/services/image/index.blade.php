@@ -48,7 +48,7 @@
                                                 <td>
                                                     <img src="{{ asset($image->image) }}" alt="Gambar" style="width: 50px; height: 50px">
                                                 </td>
-                                                <td>{{ $image->categoryServices->name}}</td>
+                                                <td>{{ $image->categoryService->name}}</td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <a href="{{ route('image_category_services.edit', $image->id) }}" class="btn btn-link btn-primary" data-bs-toggle="tooltip" title="Edit">

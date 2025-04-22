@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h3 class="card-title text-center mb-4">Masuk ke Akun Anda</h3>
 
-                        <form action="{{ url('loginTamuPost') }}" method="POST">
+                        <form action="{{ url('loginTamuPost') }}" method="POST" style="margin-top: 40px">
                             @csrf
                             <div class="mb-3">
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"

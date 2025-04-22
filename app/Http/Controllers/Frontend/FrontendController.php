@@ -229,17 +229,17 @@ class FrontendController extends Controller
         return response()->json($blogs);
     }
 
-    public function verify()
-    {
-        $configuration = Configuration::first();
-        $user = auth()->user();
+    // public function verify()
+    // {
+    //     $configuration = Configuration::first();
+    //     $user = auth()->user();
 
-        if ($user->hasVerifiedEmail()) {
-            return redirect('/')->with('info', 'Email kamu sudah diverifikasi.');
-        }
+    //     if ($user->hasVerifiedEmail()) {
+    //         return redirect('/')->with('info', 'Email kamu sudah diverifikasi.');
+    //     }
 
-        return view('frontend.auth.verify-email', compact('configuration'));
-    }
+    //     return view('frontend.auth.verify-email', compact('configuration'));
+    // }
 
     public function confirmBooking($id)
     {

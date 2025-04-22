@@ -52,6 +52,7 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Category</th>
                                             <th>Name</th>
                                             <th>Email</th>
@@ -66,6 +67,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Kategori</th>
                                             <th>Nama</th>
                                             <th>Email</th>
@@ -80,6 +82,7 @@
                                     <tbody>
                                         @foreach ($visitors as $visitor)
                                             <tr>
+                                                <td>{{ $visitor->id }}</td>
                                                 <td>{{ $visitor->categoryService->name }}</td>
                                                 <td>{{ $visitor->user->name }}</td>
                                                 <td>{{ $visitor->user->email }}</td>

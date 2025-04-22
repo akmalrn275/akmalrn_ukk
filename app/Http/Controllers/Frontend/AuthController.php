@@ -12,6 +12,56 @@ use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
+    // public function register(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|email|max:255|unique:users',
+    //         'password' => 'required|string|min:6|confirmed',
+    //     ]);
+
+    //     $apiKey = "3d52e161e9834988a183c960a5520970";
+    //     $email = $request->email;
+
+    //     try {
+    //         $response = Http::get("https://emailvalidation.abstractapi.com/v1/", [
+    //             'api_key' => $apiKey,
+    //             'email' => $email
+    //         ]);
+
+    //         $result = $response->json();
+
+    //         if (
+    //             !isset($result['is_valid_format']['value']) ||
+    //             !$result['is_valid_format']['value'] ||
+    //             $result['deliverability'] !== 'DELIVERABLE'
+    //         ) {
+    //             return back()->withErrors(['email' => 'Email tidak valid atau tidak aktif.'])
+    //                          ->with('swalError', 'true')
+    //                          ->with('anchor', '#register');
+    //         }
+    //     } catch (\Exception $e) {
+    //         Log::error("Gagal validasi email: " . $e->getMessage());
+
+    //         return back()->withErrors(['email' => 'Gagal memverifikasi email. Coba lagi nanti.'])
+    //                      ->with('swalError', 'true')
+    //                      ->with('anchor', '#register');
+    //     }
+
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //     ]);
+
+    //     $user->sendEmailVerificationNotification();
+
+    //     Auth::login($user);
+
+    //     return redirect()->route('verification.notice')
+    //                      ->with('success', 'Registrasi berhasil!.');
+    // }
+
     public function register(Request $request)
     {
         $request->validate([
@@ -20,32 +70,8 @@ class AuthController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
 
-        $apiKey = "3d52e161e9834988a183c960a5520970";
-        $email = $request->email;
-
         try {
-            $response = Http::get("https://emailvalidation.abstractapi.com/v1/", [
-                'api_key' => $apiKey,
-                'email' => $email
-            ]);
-
-            $result = $response->json();
-
-            if (
-                !isset($result['is_valid_format']['value']) ||
-                !$result['is_valid_format']['value'] ||
-                $result['deliverability'] !== 'DELIVERABLE'
-            ) {
-                return back()->withErrors(['email' => 'Email tidak valid atau tidak aktif.'])
-                             ->with('swalError', 'true')
-                             ->with('anchor', '#register');
-            }
         } catch (\Exception $e) {
-            Log::error("Gagal validasi email: " . $e->getMessage());
-
-            return back()->withErrors(['email' => 'Gagal memverifikasi email. Coba lagi nanti.'])
-                         ->with('swalError', 'true')
-                         ->with('anchor', '#register');
         }
 
         $user = User::create([
@@ -59,7 +85,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         return redirect()->route('verification.notice')
-                         ->with('success', 'Registrasi berhasil!.');
+                         ->with('success', 'Registrasi berhasil!');
     }
 
     public function login(Request $request)

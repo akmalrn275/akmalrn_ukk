@@ -16,26 +16,38 @@ class ServiceController extends Controller
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
 
-        $visitorsQuery = Service::whereHas('user', function ($query) use ($search) {
-            if ($search) {
-                $query->where('name', 'like', "%$search%");
-            }
-        });
+        $visitorsQuery = Service::query();
+
+        if ($search) {
+            $visitorsQuery->where(function ($query) use ($search) {
+                $query->whereHas('user', function ($userQuery) use ($search) {
+                    $userQuery->where('name', 'like', "%$search%");
+                });
+
+                if (is_numeric($search)) {
+                    $query->orWhere('id', $search);
+                }
+            });
+        }
 
         if ($startDate && $endDate) {
             $visitorsQuery->whereBetween('check_in_date', [$startDate, $endDate]);
         }
 
         $visitors = $visitorsQuery->orderByRaw("
-            CASE
-                WHEN status = 'Completed' THEN 1
-                WHEN status = 'Cancelled' THEN 2
-                ELSE 0
-            END
-        ")
+        CASE
+            WHEN status = 'Completed' THEN 1
+            WHEN status = 'Cancelled' THEN 2
+            ELSE 0
+        END
+    ")
             ->latest()
             ->paginate(10)
-            ->appends(['search' => $search, 'start_date' => $startDate, 'end_date' => $endDate]);
+            ->appends([
+                'search' => $search,
+                'start_date' => $startDate,
+                'end_date' => $endDate
+            ]);
 
         return view('backend.visitor.index', compact('configuration', 'visitors'));
     }

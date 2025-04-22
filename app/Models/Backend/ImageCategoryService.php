@@ -16,7 +16,7 @@ class ImageCategoryService extends Model
         'image',
     ];
 
-    public function categoryServices()
+    public function categoryService()
     {
         return $this->belongsTo(CategoryService::class);
     }
