@@ -18,13 +18,13 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Alamat Email</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="email" name="email" placeholder="Masukkan email kamu" required>
+                                    id="email" name="email" placeholder="Masukkan Alamat Email Anda" required>
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary w-100">Kirim Link Reset</button>
+                            <button type="submit" class="btn btn-secondary w-100">Kirim Link Reset</button>
                         </form>
                     </div>
                 </div>

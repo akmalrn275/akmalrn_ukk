@@ -21,7 +21,6 @@
                             <input type="hidden" name="email" value="{{ $email }}">
 
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password Baru</label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password" id="password" required placeholder="Password baru">
                                 @error('password')
@@ -30,12 +29,11 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="password_confirmation" class="form-label">Ulangi Password</label>
                                 <input type="password" class="form-control" name="password_confirmation"
                                     id="password_confirmation" required placeholder="Ulangi password">
                             </div>
 
-                            <button type="submit" class="btn btn-primary w-100">Reset Password</button>
+                            <button type="submit" class="btn btn-secondary w-100">Reset Password</button>
                         </form>
                     </div>
                 </div>

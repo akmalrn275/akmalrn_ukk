@@ -13,7 +13,7 @@ class ResetPasswordController extends Controller
     public function showResetForm(Request $request)
     {
         $configuration = Configuration::first();
-        return view('tamu.reset-password', ['token' => $request->token, 'email' => $request->email], compact('configuration'));
+        return view('frontend.auth.reset-password', ['token' => $request->token, 'email' => $request->email], compact('configuration'));
     }
 
     public function reset(Request $request)

@@ -14,7 +14,7 @@ class ForgotPasswordController extends Controller
     public function showLinkRequestForm()
     {
         $configuration = Configuration::first();
-        return view('tamu.forgot-password', compact('configuration'));
+        return view('frontend.auth.forgot-password', compact('configuration'));
     }
 
     public function sendResetLinkEmail(Request $request)
