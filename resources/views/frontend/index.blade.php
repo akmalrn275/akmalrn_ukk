@@ -7,7 +7,7 @@
                 <div class="item position-relative d-flex align-items-center justify-content-center"
                      style="background-image: url('{{ asset($slider->image) }}'); background-size: cover; background-position: center; min-height: 100vh;">
                     <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.4); z-index: 1;"></div>
-                    
+
                     <div class="container position-relative" style="z-index: 2;">
                         <div class="row site-hero-inner justify-content-center align-items-center">
                             <div class="col-md-10 text-center" data-aos="fade-up">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             @endforeach
-        </div>        
+        </div>
 
         <a class="mouse smoothscroll" href="#next">
             <div class="mouse-icon">
@@ -150,4 +150,11 @@
             </div>
         </div>
     </section>
+
+    <select name="" id="">
+        @foreach ($sliders as $slider)
+        <option value="">{{ $slider->id }}</option>
+        @endforeach
+
+    </select>
 @endsection

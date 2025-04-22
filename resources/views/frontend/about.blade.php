@@ -67,7 +67,6 @@
                             </div>
                         @endforeach
                     </div>
-                    <!-- END slider -->
                 </div>
 
             </div>
