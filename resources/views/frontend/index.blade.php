@@ -150,11 +150,4 @@
             </div>
         </div>
     </section>
-
-    <select name="" id="">
-        @foreach ($sliders as $slider)
-        <option value="">{{ $slider->id }}</option>
-        @endforeach
-
-    </select>
 @endsection
